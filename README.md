@@ -1,4 +1,4 @@
-# Depth Estimation with Neural Networks and Monocular Cameras
+# Depth Estimation with ResNet
 
 ## Project Overview
 This project focuses on using neural networks to estimate depth with monocular cameras. The study evaluates various Residual Neural Network (ResNet) architectures to determine the most effective models for depth estimation.
