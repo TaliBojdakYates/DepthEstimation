@@ -15,8 +15,8 @@ The project's primary goals are:
 - **Loss Functions**: Using different loss functions, including Huber loss, gradient loss, and structural similarity index measure (SSIM), with specific weights to prevent overfitting.
 
 ## Key Findings
-- The ResNet-50V2 model offers a good balance between accuracy and training time.
-- The ResNet-101V2 model has higher accuracy but exhibits more overfitting issues.
+- The ResNet50V2 model offers a good balance between accuracy and training time.
+- The ResNet101V2 model has a higher accuracy.
 
 
 ## Recommendations
