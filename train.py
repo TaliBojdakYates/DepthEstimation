@@ -3,10 +3,10 @@ import h5py
 import cv2
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from tensorflow.keras import layers, Input
+from tensorflow.keras import layers, Input, regularizers  
 import random
 import os
-from defs import Data_Entry
+from defs import Data_Entry, depth_loss
 
 
 #helps with gpu memory allocation
@@ -99,6 +99,8 @@ def depth_model():
     include_top=False, weights='imagenet', input_tensor=inputs
     )
 
+
+ 
     x = encoder.output
     x = layers.Conv2DTranspose(1024, 3, strides=(2, 2), padding='same', activation='relu')(x)
     x = layers.Conv2DTranspose(512, 3, strides=(2, 2), padding='same', activation='relu')(x)
@@ -118,7 +120,7 @@ def depth_model():
     early_stopping = tf.keras.callbacks.EarlyStopping(patience=3)
     history = model.fit(generator(batch_size), steps_per_epoch=steps_per_epoch,  validation_data=validation_generator(batch_size), validation_steps=val_steps, epochs=8, callbacks =[early_stopping] ,verbose=1)
 
-    model.save("FinalModeSmart.keras")
+    model.save("ResNet101_Regularization_Model.keras")
     plt.plot(history.history['loss'], label='Training Loss')
     plt.plot(history.history['val_loss'], label='Validation Loss')
     plt.title('Model Loss')

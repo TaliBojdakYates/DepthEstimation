@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 import tensorflow as tf
 
 class Data_Entry:
@@ -48,5 +49,5 @@ def depth_loss(y_true, y_pred):
     ssim_loss = 1 - tf.reduce_mean(tf.image.ssim(y_true, y_pred, max_val=1.0))
 
     # Combine the losses
-    total_loss = huber_loss + 0.5 * gradient_loss + 0.1 * ssim_loss
+    total_loss = huber_loss + 0.5* gradient_loss + 0.1 * ssim_loss
     return total_loss
